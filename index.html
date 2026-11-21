@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#8D0E34">
-<meta name="description" content="Encuentra centros de salud y practica cómo solicitar y consultar una cita para ti o tu familia en Te Acompaño.">
+<meta name="description" content="Encuentra centros de salud y prepara tu visita y consulta los canales de cita para ti o tu familia en Te Acompaño.">
 <link rel="apple-touch-icon" href="./assets/app-192.png">
 <link rel="icon" href="./assets/simbolo.png">
 <link rel="preload" as="image" href="./assets/portada.webp">
@@ -16,7 +16,7 @@
 <div class="wrap bar"><a class="brand" href="#inicio" aria-label="Te Acompaño, inicio"><img src="./assets/logo.png" alt="Te Acompaño" width="520" height="144"></a>
 <nav id="nav" aria-label="Navegación principal"><a class="current" href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#centros">Centros de salud</a><a href="#nosotros">Sobre nosotros</a><a href="#ayuda">Ayuda</a><a href="#contacto">Contacto</a>
 </nav>
-<div class="head-actions"><button class="btn primary head-cta" data-action="consult"><span data-icon="calendar" data-size="18"></span>Consultar mi cita</button><button id="menu" class="icon-button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span data-icon="menu"></span></button>
+<div class="head-actions"><button id="head-account" class="btn outline" data-action="account">Iniciar sesión</button><button class="btn primary head-cta" data-action="consult"><span data-icon="calendar" data-size="18"></span><span class="cta-full">Consultar mi cita</span><span class="cta-short">Mis citas</span></button><button id="menu" class="icon-button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span data-icon="menu"></span></button>
 </div>
 </div>
 </header>
@@ -27,10 +27,10 @@
 <p class="eyebrow"><i></i> Orientación en salud · Perú</p>
 <h1>Tu bienestar<br><em>es lo primero</em><span class="title-dot">.</span>
 </h1>
-<p class="lede">Encuentra un centro de salud cercano, revisa los requisitos y solicita una cita para ti o para un familiar.</p>
+<p class="lede">Encuentra un centro de salud cercano, revisa los requisitos y prepara tu próxima visita o la de un familiar.</p>
 <form id="hero-search"><label for="hero-q">Buscar un centro de salud</label>
-<div class="searchbox"><span data-icon="search" data-size="22"></span><input id="hero-q" type="search" placeholder="Escribe un distrito o establecimiento"><button class="btn primary" type="submit">Buscar</button>
-</div>
+<div class="searchbox"><span data-icon="search" data-size="22"></span><input id="hero-q" type="search" autocomplete="off" aria-describedby="search-status" placeholder="Nombre de la sede o distrito"><button class="btn primary" type="submit" disabled>Buscar</button>
+</div><p id="search-status" class="micro" role="status">Escribe el nombre del centro o su distrito.</p><div id="suggestions" hidden></div>
 </form><button class="location" data-action="locate"><span data-icon="near" data-size="17"></span>Usar mi ubicación</button>
 <p class="micro" id="geo-msg" role="status">
 </p>
@@ -54,7 +54,7 @@
 <div class="service-grid">
 <article><span class="tile" data-icon="calendar"></span>
 <h3>Pedir una cita médica</h3>
-<p>Elige el servicio, la sede y el horario para ti o un familiar.</p><button class="text-btn" data-action="book">Solicitar una cita</button>
+<p>Elige una sede y un servicio. Consulta cómo pedir tu turno por el canal oficial.</p><button class="text-btn" data-action="book">Solicitar una cita</button>
 </article>
 <article><span class="tile" data-icon="map"></span>
 <h3>Buscar centros de salud</h3>
@@ -67,10 +67,10 @@
 </div>
 </div>
 </section>
-<section id="centros" class="wrap section">
-<p class="eyebrow"><i></i> Directorio de demostración</p>
+<section id="centros" class="wrap section" tabindex="-1" hidden>
+<p class="eyebrow"><i></i> Directorio de Lima</p>
 <h2>Centros de salud</h2>
-<p class="intro">Busca una sede de ejemplo en Lima y revisa qué servicios ofrece.</p>
+<p class="intro">Encuentra hospitales, policlínicos, centros y puestos de salud. Cada ficha enlaza la fuente de sus datos.</p>
 <div class="filters"><label>Nombre o distrito<input type="search" id="center-q" placeholder="Distrito o establecimiento"></label><label>Tipo de sede<select id="filter-type"></select></label><label>Servicio<select id="filter-service"></select></label><label>Modalidad<select id="filter-mode"></select></label>
 </div>
 <div class="results-line"><span id="count" role="status"></span><button class="text-btn" id="clear">Limpiar filtros</button>
@@ -85,7 +85,7 @@
 <div>
 <p class="eyebrow"><i></i> Sobre nosotros</p>
 <h2>Una visita más fácil de preparar.</h2>
-<p>Te Acompaño está pensado para las personas mayores y quienes las acompañan. Reunimos la sede, el horario y los requisitos de cada cita en un lugar, para que cada familia pueda organizar su visita con tranquilidad.</p>
+<p>Te Acompaño está pensado para las personas mayores y quienes las acompañan. Reunimos las direcciones, los horarios publicados y los canales de citas de Lima para que puedas decidir dónde ir y qué llevar.</p><p>Queremos que una persona mayor pueda preparar su visita paso a paso, por su cuenta o con un familiar. Por eso puedes leer los requisitos en voz alta, guardar una lista para el día de la cita y compartir cómo llegar.</p><p>Contrastamos las fichas con fuentes institucionales. Puedes abrir la fuente de cada sede o enviarnos una corrección cuando encuentres un cambio.</p>
 </div>
 </div>
 </section>
@@ -95,21 +95,14 @@
 <h2>Preguntas frecuentes</h2>
 </div>
 <div class="answers">
-<details><summary>¿Puedo pedir una cita para un familiar?</summary>
-<p>Sí. En el paso «Datos del paciente», elige «Para otra persona». Indica tu relación con el paciente y si también lo acompañarás.</p>
-</details>
-<details><summary>¿Cómo consulto el estado de mi cita?</summary>
-<p>Entra en «Consultar mi cita» con tu perfil local. Elige al paciente y verifica su DNI con el código de demostración para abrir la ficha.</p>
-</details>
-<details><summary>¿Dónde encuentro los requisitos?</summary>
-<p>En «Ver requisitos» puedes seleccionar la sede, el servicio y la modalidad antes de iniciar una solicitud.</p>
-</details>
-<details><summary>¿Puedo usar la web sin compartir mi ubicación?</summary>
-<p>Sí. Escribe el distrito en el buscador o elige un punto de partida manual al comparar sedes.</p>
-</details>
-<details><summary>¿En qué dispositivo se guarda mi registro?</summary>
-<p>En el navegador donde creaste tu perfil. Usa datos ficticios. Si eliminas los datos del sitio, también se borran tus registros y citas locales.</p>
-</details>
+<details><summary>¿Cómo pido una cita?</summary><p>En «Pedir una cita médica», selecciona sede, servicio y cobertura. Verás el horario publicado y el canal que indica el establecimiento para solicitar tu turno.</p></details>
+<details><summary>¿El horario de atención garantiza un cupo?</summary><p>La sede confirma la fecha y la hora. Cuando tengas esa confirmación, puedes guardar la visita en tu cuenta como recordatorio.</p></details>
+<details><summary>¿Puedo preparar una visita para mi familiar?</summary><p>Sí. Al guardar la visita puedes indicar el nombre del paciente y de quien lo acompañará. Desde «Mi visita» puedes compartir la fecha y la ruta.</p></details>
+<details><summary>¿Cómo consulto mis citas?</summary><p>Pulsa «Consultar mi cita» o «Mis citas» en la cabecera. Inicia sesión o regístrate gratis en el mismo navegador donde guardarás tus visitas.</p></details>
+<details><summary>¿Cómo sé qué llevar según mi seguro?</summary><p>Abre «Ver requisitos» y elige tu cobertura. Encontrarás pasos y un enlace oficial para revisar tu afiliación, red o autorización.</p></details>
+<details><summary>¿Qué pasa si no comparto mi ubicación?</summary><p>En «Cómo llegar» escribe tu punto de partida o abre Google Maps y elígelo allí.</p></details>
+<details><summary>¿Dónde quedan mis datos?</summary><p>Tu perfil y tus visitas se guardan en este navegador. Para tenerlos a mano, vuelve desde el mismo dispositivo y navegador. Borrar los datos del sitio elimina la copia local.</p></details>
+<details><summary>¿Cómo comunico un dato incorrecto?</summary><p>Pulsa «Reportar un dato», indica si corresponde a la web o a una sede y explica qué cambió. Incluye un correo donde podamos responderte.</p></details>
 </div>
 </section>
 <section id="contacto" class="contact">
@@ -117,13 +110,13 @@
 <div>
 <p class="eyebrow"><i></i> Contacto</p>
 <h2>¿Encontraste un dato desactualizado?</h2>
-<p>Deja una corrección de ejemplo sobre una sede. El reporte se guarda en este navegador.</p>
+<p>Cuéntanos si el problema está en la plataforma o si encontraste información diferente al visitar una sede.</p>
 </div><button class="btn outline" data-action="report"><span data-icon="flag" data-size="18"></span>Reportar un dato</button>
 </div>
 </section>
 </main>
 <footer>
-<div class="wrap footer"><img src="./assets/logo.png" alt="Te Acompaño" width="160" height="44"><span>Demostración con datos ficticios · Perú</span><button class="text-btn" id="foot-account" data-action="consult">Mi cuenta</button>
+<div class="wrap footer"><img src="./assets/logo.png" alt="Te Acompaño" width="160" height="44"><span>Orientación en salud para las familias del Perú</span><small>© 2026 Te Acompaño. Todos los derechos reservados.</small>
 </div>
 </footer>
 <dialog id="dialog" aria-labelledby="dialog-title">

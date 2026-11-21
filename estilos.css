@@ -1064,7 +1064,7 @@ dialog.closing {
   }
 }
 
-@media(max-width:1080px) {
+@media(max-width:1190px) {
   .bar {
     min-height:70px
   }
@@ -1314,3 +1314,91 @@ dialog.closing {
   margin-top:24px
 }
 
+
+[hidden] {display:none!important}
+.cta-short {display:none}
+#head-account {min-height:44px;border-radius:999px;font-size:.93rem}
+.bar,.head-actions {gap:10px}
+#nav.open {max-height:calc(100dvh - 115px);overflow-y:auto;overscroll-behavior:contain}
+.hero-copy,.center-card,.filters label,.form-grid label,.panel-page,.about-grid>div {min-width:0}
+.quick-card,.btn,.panel-page,.center-card,.about p {overflow-wrap:anywhere}
+.location,.text-btn,.detail-links a,.detail-links button {min-height:44px}
+.detail-links,.actions {gap:12px;flex-wrap:wrap}
+#dialog-content .actions {margin-block:16px}
+.stack,.form-grid {align-items:start}
+#dialog-content form + details,.panel-page h3:not(:first-child),.about p+p {margin-top:18px}
+.panel-page>details {margin-top:16px}
+.status,.list-button {max-width:100%}
+label:has(>input[type=checkbox]) {display:flex;align-items:center}
+label input:not([type=checkbox]),select,textarea {min-width:0;max-width:100%;font-size:max(1rem,16px)}
+select {text-overflow:ellipsis}
+#hero-search {position:relative}
+#suggestions {margin-block:8px;display:grid;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:0 4px 20px #40212710;animation:rise .16s ease}
+#suggestions button {text-align:left;min-height:48px;padding:8px 12px;border-radius:9px}
+#suggestions button:hover,#suggestions button:focus-visible {background:var(--wash)}
+#suggestions small {display:block;color:var(--muted)}
+#search-status {margin-top:7px}
+.spinner {display:inline-block;width:15px;height:15px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--wine);vertical-align:middle;animation:turn .55s linear infinite}
+@keyframes turn {to{transform:rotate(360deg)}}
+.directory .center-card {animation:rise .2s ease}
+.directory .center-card details {margin-block:10px}
+.center-card summary,.answers summary {min-height:44px}
+#report-place {display:grid;gap:12px}
+#report-place:empty {display:none}
+#centros:focus {outline:none}
+.faq details[open] p {animation:rise .18s ease}
+dialog {max-width:calc(100% - 16px);max-height:calc(100vh - 20px);max-height:min(92dvh,860px)}
+dialog .dialog-top {z-index:3}
+dialog input,dialog select,dialog textarea {scroll-margin-block:65px 24px}
+#dialog-content {padding-bottom:max(20px,env(safe-area-inset-bottom))}
+@media (max-width:760px){
+  .filters {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .head-cta .cta-full {display:inline}
+  .head-cta .cta-short {display:none}
+  .footer {display:grid;gap:8px}
+  .footer span {order:0}
+  .hero-copy,.hero-grid {width:100%;min-width:0}
+  .hero-grid.wrap {width:calc(100% - 36px)}
+  .quick-grid {gap:10px}
+  .searchbox input[type=search] {font-size:16px}
+}
+@media (max-width:580px){
+  html {scroll-padding-top:118px}
+  .bar {display:grid;grid-template-columns:1fr auto auto;grid-template-rows:auto auto;gap:5px 10px;padding-block:5px 8px}
+  .brand {grid-row:1;grid-column:1/3;justify-self:start}
+  .brand img {width:138px}
+  .head-actions {display:contents}
+  #menu {grid-row:1;grid-column:3}
+  #head-account {grid-row:2;grid-column:1;min-height:44px}
+  .head-cta {grid-row:2;grid-column:2/4;min-height:44px}
+  .head-cta .cta-full {display:inline}
+  .head-cta .cta-short {display:none}
+  #nav.open {right:12px;left:12px;min-width:0;max-height:calc(100dvh - 110px)}
+  .hero {padding-top:27px}
+  .actions>.btn {flex:1 1 10rem}
+  .filters,.facts {grid-template-columns:minmax(0,1fr)}
+  .filters label {grid-column:auto}
+  .detail-links {gap:6px 16px}
+  .center-card .btn {width:100%}
+  .box,.notice,.empty {padding:14px}
+  .split,.list-button {flex-wrap:wrap}
+}
+@media (max-width:365px){
+  .wrap,.hero-grid.wrap {width:calc(100% - 24px)}
+  .quick-card {display:grid;align-content:start;gap:6px;padding:12px}
+  .about-grid {grid-template-columns:1fr}
+  .searchbox .btn {padding-inline:10px}
+}
+@media (max-height:480px) and (orientation:landscape){
+  header {position:relative}
+  html {scroll-padding-top:12px}
+  #nav.open {max-height:65vh}
+  dialog {max-height:96dvh}
+}
+@media(prefers-reduced-motion:reduce){.spinner{animation:none}.hero-copy>*,.panel-page,.center-card,#suggestions{animation:none}}
+
+.domain-buttons {display:flex;gap:8px;flex-wrap:wrap}
+.domain-buttons button {min-height:44px;padding:6px 12px;border:1px solid var(--line);border-radius:10px;color:var(--wine);background:white;font-weight:650}
+
+.searchbox input[type=search] {flex:1 1 0;width:0}
+.searchbox .btn {flex:none;white-space:nowrap;overflow-wrap:normal}
