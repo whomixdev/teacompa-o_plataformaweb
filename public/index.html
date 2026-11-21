@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8D0E34">
+<meta name="description" content="Encuentra centros de salud y practica cómo solicitar y consultar una cita para ti o tu familia en Te Acompaño.">
+<link rel="apple-touch-icon" href="./assets/app-192.png">
+<link rel="icon" href="./assets/simbolo.png">
+<link rel="preload" as="image" href="./assets/portada.webp">
+<link rel="stylesheet" href="./estilos.css"><title>Te Acompaño · Tu bienestar es lo primero</title>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header>
+<div class="wrap bar"><a class="brand" href="#inicio" aria-label="Te Acompaño, inicio"><img src="./assets/logo.png" alt="Te Acompaño" width="520" height="144"></a>
+<nav id="nav" aria-label="Navegación principal"><a class="current" href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#centros">Centros de salud</a><a href="#nosotros">Sobre nosotros</a><a href="#ayuda">Ayuda</a><a href="#contacto">Contacto</a>
+</nav>
+<div class="head-actions"><button class="btn primary head-cta" data-action="consult"><span data-icon="calendar" data-size="18"></span>Consultar mi cita</button><button id="menu" class="icon-button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span data-icon="menu"></span></button>
+</div>
+</div>
+</header>
+<main id="contenido">
+<section id="inicio" class="hero">
+<div class="wrap hero-grid">
+<div class="hero-copy">
+<p class="eyebrow"><i></i> Orientación en salud · Perú</p>
+<h1>Tu bienestar<br><em>es lo primero</em><span class="title-dot">.</span>
+</h1>
+<p class="lede">Encuentra un centro de salud cercano, revisa los requisitos y solicita una cita para ti o para un familiar.</p>
+<form id="hero-search"><label for="hero-q">Buscar un centro de salud</label>
+<div class="searchbox"><span data-icon="search" data-size="22"></span><input id="hero-q" type="search" placeholder="Escribe un distrito o establecimiento"><button class="btn primary" type="submit">Buscar</button>
+</div>
+</form><button class="location" data-action="locate"><span data-icon="near" data-size="17"></span>Usar mi ubicación</button>
+<p class="micro" id="geo-msg" role="status">
+</p>
+</div>
+<figure class="hero-visual"><img src="./assets/portada.webp" alt="Una adulta mayor y su hija sonríen mientras caminan juntas en un parque." width="1536" height="1024" fetchpriority="high">
+<div class="photo-shadow">
+</div><figcaption><span class="photo-icon" data-icon="people" data-size="22"></span><span>Salud en familia<small>Para adultos mayores y acompañantes</small></span></figcaption>
+</figure>
+</div>
+</section>
+<section class="quick wrap" aria-labelledby="quick-heading">
+<h2 class="small-heading" id="quick-heading">Accesos rápidos</h2>
+<div class="quick-grid">
+<button class="quick-card" data-action="book"><span class="tile" data-icon="calendar"></span>Pedir una cita médica</button><a class="quick-card" href="#centros"><span class="tile" data-icon="center"></span>Buscar centros de salud</a><button class="quick-card" data-action="requirements"><span class="tile" data-icon="list"></span>Ver requisitos</button><a class="quick-card" href="#ayuda"><span class="tile" data-icon="help"></span>Necesito ayuda</a>
+</div>
+</section>
+<section id="servicios" class="band">
+<div class="wrap">
+<p class="eyebrow"><i></i> Servicios</p>
+<h2>¿Qué necesitas hacer?</h2>
+<div class="service-grid">
+<article><span class="tile" data-icon="calendar"></span>
+<h3>Pedir una cita médica</h3>
+<p>Elige el servicio, la sede y el horario para ti o un familiar.</p><button class="text-btn" data-action="book">Solicitar una cita</button>
+</article>
+<article><span class="tile" data-icon="map"></span>
+<h3>Buscar centros de salud</h3>
+<p>Explora sedes por distrito, tipo de establecimiento y modalidad.</p><a class="text-btn" href="#centros">Explorar el directorio</a>
+</article>
+<article><span class="tile" data-icon="list"></span>
+<h3>Ver requisitos</h3>
+<p>Revisa los documentos y los pasos para preparar tu visita.</p><button class="text-btn" data-action="requirements">Consultar requisitos</button>
+</article>
+</div>
+</div>
+</section>
+<section id="centros" class="wrap section">
+<p class="eyebrow"><i></i> Directorio de demostración</p>
+<h2>Centros de salud</h2>
+<p class="intro">Busca una sede de ejemplo en Lima y revisa qué servicios ofrece.</p>
+<div class="filters"><label>Nombre o distrito<input type="search" id="center-q" placeholder="Distrito o establecimiento"></label><label>Tipo de sede<select id="filter-type"></select></label><label>Servicio<select id="filter-service"></select></label><label>Modalidad<select id="filter-mode"></select></label>
+</div>
+<div class="results-line"><span id="count" role="status"></span><button class="text-btn" id="clear">Limpiar filtros</button>
+</div>
+<div class="directory" id="directory">
+</div>
+</section>
+<section id="nosotros" class="about">
+<div class="wrap about-grid">
+<div class="about-mark"><img width="110" height="120" src="./assets/simbolo.png" alt="">
+</div>
+<div>
+<p class="eyebrow"><i></i> Sobre nosotros</p>
+<h2>Una visita más fácil de preparar.</h2>
+<p>Te Acompaño está pensado para las personas mayores y quienes las acompañan. Reunimos la sede, el horario y los requisitos de cada cita en un lugar, para que cada familia pueda organizar su visita con tranquilidad.</p>
+</div>
+</div>
+</section>
+<section id="ayuda" class="wrap section faq">
+<div>
+<p class="eyebrow"><i></i> Ayuda</p>
+<h2>Preguntas frecuentes</h2>
+</div>
+<div class="answers">
+<details><summary>¿Puedo pedir una cita para un familiar?</summary>
+<p>Sí. En el paso «Datos del paciente», elige «Para otra persona». Indica tu relación con el paciente y si también lo acompañarás.</p>
+</details>
+<details><summary>¿Cómo consulto el estado de mi cita?</summary>
+<p>Entra en «Consultar mi cita» con tu perfil local. Elige al paciente y verifica su DNI con el código de demostración para abrir la ficha.</p>
+</details>
+<details><summary>¿Dónde encuentro los requisitos?</summary>
+<p>En «Ver requisitos» puedes seleccionar la sede, el servicio y la modalidad antes de iniciar una solicitud.</p>
+</details>
+<details><summary>¿Puedo usar la web sin compartir mi ubicación?</summary>
+<p>Sí. Escribe el distrito en el buscador o elige un punto de partida manual al comparar sedes.</p>
+</details>
+<details><summary>¿En qué dispositivo se guarda mi registro?</summary>
+<p>En el navegador donde creaste tu perfil. Usa datos ficticios. Si eliminas los datos del sitio, también se borran tus registros y citas locales.</p>
+</details>
+</div>
+</section>
+<section id="contacto" class="contact">
+<div class="wrap contact-inner">
+<div>
+<p class="eyebrow"><i></i> Contacto</p>
+<h2>¿Encontraste un dato desactualizado?</h2>
+<p>Deja una corrección de ejemplo sobre una sede. El reporte se guarda en este navegador.</p>
+</div><button class="btn outline" data-action="report"><span data-icon="flag" data-size="18"></span>Reportar un dato</button>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap footer"><img src="./assets/logo.png" alt="Te Acompaño" width="160" height="44"><span>Demostración con datos ficticios · Perú</span><button class="text-btn" id="foot-account" data-action="consult">Mi cuenta</button>
+</div>
+</footer>
+<dialog id="dialog" aria-labelledby="dialog-title">
+<div class="dialog-top"><span>Te Acompaño</span><button class="icon-button" id="dialog-close" aria-label="Cerrar ventana"><span data-icon="close"></span></button>
+</div>
+<div id="dialog-content">
+</div>
+</dialog>
+<div id="announcement" class="sr" role="status">
+</div><script type="module" src="./js/main.js"></script>
+</body>
+</html>
