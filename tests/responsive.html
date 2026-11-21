@@ -1,0 +1,28 @@
+<!doctype html><meta charset="utf-8"><title>Verificación adaptable</title><h1>Verificación adaptable</h1><pre id="log"></pre><script>
+const print=s=>document.querySelector('#log').textContent+=s+'\n';
+const delay=t=>new Promise(r=>setTimeout(r,t));
+(async()=>{
+ for(const [width,height] of [[320,568],[360,740],[390,844],[600,960],[768,1024],[820,1180],[915,412],[1024,768],[1195,800],[1280,800],[1440,900]]){
+ const f=document.createElement('iframe');f.style='width:'+width+'px;height:'+height+'px;border:0';f.src='../public/index.html?qa='+width;let loaded=new Promise(r=>f.onload=r);document.body.append(f);await loaded;
+ const d=f.contentDocument,w=f.contentWindow,$=s=>d.querySelector(s),fail=[];
+ function ok(v,s){if(!v)fail.push(s)}
+ function fit(s,el=d.documentElement){ok(el.scrollWidth<=el.clientWidth+1,s+' '+el.scrollWidth+'/'+el.clientWidth)}
+ function btn(s){const el=$(s);if(!el)throw Error(s);el.click()}
+ function change(s,value){const el=$(s);el.value=value;el.dispatchEvent(new w.Event('change',{bubbles:true}));}
+ async function shut(){btn('#dialog-close');await delay(190)}
+ async function dialogFit(label){await delay(35);fit(label,$('#dialog'));ok($('#dialog').open,label+' ausente');}
+ try{
+ fit('portada');const searchButton=$('#hero-search button');ok(searchButton.offsetHeight<=50,'buscar en una linea');const buttons=['#head-account','.head-cta','#menu'].map(s=>$(s).getBoundingClientRect()).filter(r=>r.width>0);for(let i=0;i<buttons.length;i++){let a=buttons[i];ok(a.height>=43 && a.left>=0 && a.right<=width,'cabecera boton');for(let j=i+1;j<buttons.length;j++){let b=buttons[j];ok(!(a.left<b.right && a.right>b.left && a.top<b.bottom && a.bottom>b.top),'solapamiento');}}
+ ok($('#centros').hidden,'directorio prematuro');ok($('#hero-search button').disabled,'busqueda vacia');
+ $('#hero-q').value='m';$('#hero-q').dispatchEvent(new w.Event('input',{bubbles:true}));await delay(180);
+ ok(!!$('#suggestions button'),'sugerencias');btn('#suggestions button');ok(!$('#centros').hidden && $('.center-card'),'resultado');
+ btn('#clear');ok(d.querySelectorAll('.center-card').length===20,'20 sedes');fit('directorio');
+ if(w.getComputedStyle($('#menu')).display!=='none'){btn('#menu');ok($('#nav').getBoundingClientRect().right<=width,'menu ancho');ok($('#nav').clientHeight<=height,'menu alto');btn('#nav a[href="#centros"]');ok(!$('#nav').classList.contains('open'),'menu cierre')}
+ btn('.center-card [data-action=book]');change('#dialog [name=service]','Oftalmología');change('#dialog [name=mode]','SIS');await dialogFit('citas');ok($('#guide-info').innerText.includes('Horario de Oftalmología'),'horario');ok($('#dialog [data-do=save]'),'guardar');await shut();
+ btn('.center-card [data-action=requirements]');change('#dialog [name=mode]','EPS');ok($('#guide-info').innerText.includes('EPS'),'requisitos');await dialogFit('requisitos');await shut();
+ btn('.center-card [data-action=route]');$('#dialog [name=origin]').value='Surco';$('#dialog form').requestSubmit();ok($('#route-result a').href.includes('origin=Surco'),'origen');await dialogFit('mapa');await shut();
+ btn('[data-action=report]');change('#dialog [name=origin]','Establecimiento de salud');ok($('#dialog select[name=place]').options.length===21,'reporte sedes');await dialogFit('reporte');await shut();
+ btn('#head-account');await delay(150);if($('#dialog-title')?.textContent==='Mi cuenta'){await dialogFit('mi cuenta');}else{btn('[data-do=register]');change('#dialog [name=insurance]','Seguro privado');ok($('#dialog [name=provider]'),'registro privado');await dialogFit('registro');}await shut();
+ } catch(e){fail.push(e.message)}print(width+' × '+height+' · '+(fail.length?fail.join(' | '):'OK'));f.remove();}
+ print('FIN');
+})().catch(e=>print(String(e)))</script>

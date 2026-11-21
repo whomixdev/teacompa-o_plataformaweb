@@ -28,6 +28,7 @@ export function close(force = false) { if (guard && !force) {
     return;
 } dlg.classList.add('closing'); closeTimer = setTimeout(() => { dlg.close(); dlg.classList.remove('closing'); guard = null; restore?.focus({ preventScroll: true }); }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 140); }
 $('#dialog-close').onclick = () => close();
+dlg.addEventListener('close', () => { if ('speechSynthesis' in window) speechSynthesis.cancel(); });
 dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
 dlg.addEventListener('click', e => { if (e.target === dlg) {
     const r = dlg.getBoundingClientRect();

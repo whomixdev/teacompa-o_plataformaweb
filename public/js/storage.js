@@ -38,3 +38,17 @@ else
     throw new Error('La cita cambió. Vuelve a consultarla.'); }
 export const saveReport = (center, detail) => run('reports', 'readwrite', s => s.add({ id: crypto.randomUUID(), center, detail, created: new Date().toISOString() }));
 export const session = { get: () => sessionStorage.getItem('te-acompano:perfil'), set: p => sessionStorage.setItem('te-acompano:perfil', p.emailKey), clear: () => sessionStorage.removeItem('te-acompano:perfil') };
+
+export const saveVisit = visit => run('appointments','readwrite',s=>s.add(visit));
+export function updateChecklist(visit, owner, index, checked) {
+    return run('appointments','readwrite',s=>{
+        const request=s.get(visit.id);
+        request.onsuccess=()=>{
+            const record=request.result;
+            if(record?.owner!==owner || record.kind!=='visit') return;
+            const checklist=new Set(record.checklist || []);
+            if(checked) checklist.add(index); else checklist.delete(index);
+            s.put({...record,checklist:[...checklist]});
+        };
+    });
+}
